@@ -1,1 +1,0 @@
-/usr/bin/c++   -o3 -w -O3 -DNDEBUG -pg   CMakeFiles/opg1.dir/Andreas_DeLille_opgave1.o  -o bin/opg1  -L/usr/local/lib -rdynamic -lopencv_core -lopencv_highgui -lopencv_imgproc -Wl,-rpath,/usr/local/lib 

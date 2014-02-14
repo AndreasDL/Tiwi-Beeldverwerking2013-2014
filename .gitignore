@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+#folders
+bin/
+CMakeFiles/
+
+CMakeCache.txt
+cmake_install.cmake

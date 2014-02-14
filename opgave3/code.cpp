@@ -28,7 +28,7 @@ int main(int argc, char **argv){
     //toon eerste
     namedWindow( "normal", WINDOW_AUTOSIZE );// Create a window for display.
     imshow( "normal", image );
-    //waitkey(0);
+    //waitKey(0);
 
     //filter
     Mat gauss;

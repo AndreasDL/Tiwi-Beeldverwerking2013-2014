@@ -7,13 +7,30 @@
 using namespace cv;
 using namespace std;
 
+//dst hardcoderen
+//klik eerst linksonder, linksboven,rechtsboven & rechtsonder
+
+const int xlinks  = 100;
+const int xrechts = 280;
+const int yonder  = 550;
+const int yboven  = 80;
+Point2f dst[4]={Point2f(xlinks,yonder),
+        Point2f(xlinks,yboven),
+        Point2f(xrechts,yboven),
+        Point2f(xrechts,yonder)
+};
+//probleem: zwarte rand errond => dst breder maken
+
+
+
 struct data{
     int count;
     Point2f src[4];
-    Point2f dst[4];
+    Point2f dst[4]; 
     Mat* img;
 };
 void transformer(int event, int x, int y, int flags, void* d);
+
 
 int main(int argc, char** argv){
     if (argc != 2){
@@ -52,16 +69,15 @@ void transformer(int event, int x, int y, int flags, void* d){
         cout << "Left button of the mouse is clicked - position (" << x << ", " << y << ")" << endl;
 
         if (dat->count < 4){
-            dat->src[dat->count]=Point2f(x,y);
-            dat->count++;
-        }else{
+            dat->src[dat->count++]=Point2f(x,y);
+        }/*else{// -> dst hardcoderen
             dat->dst[dat->count-4]=Point2f(x,y);
             dat->count++;
-        }
+        }*/
 
-        if(dat->count == 8){
+        if(dat->count == 4){
             //http://stackoverflow.com/questions/10125432/recognizing-rectangular-area-in-an-image
-            Mat kernel = getPerspectiveTransform(dat->src,dat->dst);
+            Mat kernel = getPerspectiveTransform(dat->src,dst);
             
             //vervormen
             Mat tmp;

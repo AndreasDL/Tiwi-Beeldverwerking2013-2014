@@ -50,11 +50,7 @@ int main(int argc, char **argv){
     namedWindow( "normal2", WINDOW_AUTOSIZE );// Create a window for display.
     imshow("normal2",tmp);
     waitKey(0);
-    waitKey(0);
-    waitKey(0);
-    waitKey(0);
 
     
     return 0;
-
 }

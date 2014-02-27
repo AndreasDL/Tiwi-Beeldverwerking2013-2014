@@ -28,7 +28,6 @@ int main(int argc, char** argv){
     Canny(img, edges, 15, 10);
     //edges.convertTo(edges,CV_8UC1);
     
-
     //Hough-Lines (edges=>lijntjes)
     vector<Vec2f> lines;
     HoughLines(edges, lines, 1, 0.01, 80);

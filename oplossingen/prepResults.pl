@@ -7,7 +7,7 @@ my $dir="/home/drew/school/Beeldverwerking/oplossingen";
 my $naam= "Andreas_DeLille_opgave";
 
 #`cd oplossingen`;
-for (my $i = 1 ; $i < 12 ; $i++){
+for (my $i = 1 ; $i < 13 ; $i++){
 	`mkdir $dir/$naam$i`;
 	`cp $dir/opgave$i.cpp $dir/$naam$i/$naam$i.cpp`;
 

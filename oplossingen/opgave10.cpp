@@ -41,21 +41,21 @@ int main(int argc, char** argv){
     filter2D(square,gauss,CV_32F,row);
 
     //5. DoGFilter
-    Mat hondFilter;
-    Sobel(gauss,hondFilter,CV_32F,1,0);
+    Mat DoGFilter;
+    Sobel(gauss,DoGFilter,CV_32F,1,0);
 
     //6. rotatie
     Point2f center(AANTRIJ/2,AANTRIJ/2);
     Mat rotMatrix = getRotationMatrix2D(center,-15,1);
 
     //7. roteer hondje
-    Mat rotatedHondFilter;
-    warpAffine(hondFilter,rotatedHondFilter,rotMatrix,hondFilter.size());
-    Mat hondFilterNormalized;
-    normalize(rotatedHondFilter,hondFilterNormalized,0,1,NORM_MINMAX);
+    Mat rotatedDoGFilter;
+    warpAffine(DoGFilter,rotatedDoGFilter,rotMatrix,DoGFilter.size());
+    Mat DoGFilterNormalized;
+    normalize(rotatedDoGFilter,DoGFilterNormalized,0,1,NORM_MINMAX);
 
     //show
-    imshow("hondje",hondFilterNormalized);
+    imshow("hondje",DoGFilterNormalized);
 
     // Wait until user press some key
     waitKey(0);
@@ -63,7 +63,7 @@ int main(int argc, char** argv){
     // 8. zet de afbeelding om naar grijswaarden en filter ze met het geroteerde DoG filter;
     Mat dst;
     cvtColor(img, dst, CV_RGB2GRAY);
-    filter2D(dst, dst, CV_32F, rotatedHondFilter);
+    filter2D(dst, dst, CV_32F, rotatedDoGFilter);
     // 9. neem de absolute waarde van de filterrespons met abs;
     dst = abs(dst/512);    
 

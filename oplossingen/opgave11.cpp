@@ -28,10 +28,9 @@ int main(int argc, char** argv){
     Canny(img, edges, 15, 10);
     //edges.convertTo(edges,CV_8UC1);
     
-
     //Hough-Lines (edges=>lijntjes)
     vector<Vec2f> lines;
-    HoughLines(edges, lines, 0.5, 0.05, 30);
+    HoughLines(edges, lines, 1, 0.01, 80);
 
     //line (tekenen)
     Mat result = img;
@@ -47,7 +46,7 @@ int main(int argc, char** argv){
         pt1.y = cvRound(y0 + 1000*(a));
         pt2.x = cvRound(x0 - 1000*(-b));
         pt2.y = cvRound(y0 - 1000*(a));
-        line( result, pt1, pt2, Scalar(0,0,255), 3, CV_AA);
+        line( result, pt1, pt2, Scalar(0,0,255), 1, CV_AA);
     }
     
     namedWindow("result", 1);

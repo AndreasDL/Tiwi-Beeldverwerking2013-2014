@@ -4,12 +4,13 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
+
 using namespace cv;
 using namespace std;
 
 
 int main(int argc, char **argv){
-    if( argc != 2)
+	if( argc != 2)
     {
      cout <<" Usage: display_image ImageToLoadAndDisplay" << endl;
      return -1;
@@ -30,15 +31,13 @@ int main(int argc, char **argv){
     //waitKey(0);
 
     //filter
-    Mat diffX;//,diffY;
-    Sobel(image,diffX,-1,1,0,3);
-    //Sobel(image,diffY,-1,0,1);
+    Mat gauss;
+    GaussianBlur(image,gauss,cv::Size(3,3),0);
 
 
     //toon tweede
     namedWindow( "normal2", WINDOW_AUTOSIZE );// Create a window for display.
-    imshow("normal2",diffX);
-
+    imshow("normal2",gauss);
     waitKey(0);
     
     return 0;

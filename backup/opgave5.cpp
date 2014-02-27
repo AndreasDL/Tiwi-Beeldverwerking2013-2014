@@ -9,7 +9,7 @@ using namespace std;
 
 
 int main(int argc, char **argv){
-    if( argc != 2)
+	if( argc != 2)
     {
      cout <<" Usage: display_image ImageToLoadAndDisplay" << endl;
      return -1;
@@ -30,14 +30,16 @@ int main(int argc, char **argv){
     //waitKey(0);
 
     //filter
-    Mat diffX;//,diffY;
-    Sobel(image,diffX,-1,1,0,3);
-    //Sobel(image,diffY,-1,0,1);
+    Mat diffX,diffY;
+    Sobel(image,diffX,-1,1,0);
+    Sobel(image,diffY,-1,0,1);
 
 
     //toon tweede
     namedWindow( "normal2", WINDOW_AUTOSIZE );// Create a window for display.
     imshow("normal2",diffX);
+    namedWindow( "normal3", WINDOW_AUTOSIZE );// Create a window for display.
+    imshow("normal3",diffY);
 
     waitKey(0);
     
